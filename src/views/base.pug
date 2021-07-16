@@ -1,0 +1,22 @@
+doctype html
+html(lang="ko")
+    head
+        title #{pageTitle} | #{siteName}
+        link(rel="stylesheet", href="https://unpkg.com/mvp.css")
+    
+        main
+            nav 
+                ul 
+                    li 
+                        a(href="/") search 
+                    li 
+                        a(href="/") Home
+                    li
+                        a(href="/board")  Board 
+                    li 
+                        a(href="/login")  Login 
+                    li 
+                        a(href="/join")  join
+            block content
+        include partial/footer
+    block scripts 
