@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "new project",
   "scripts": {
-    "dev": " nodemon "
+    "start": " nodemon "
   },
   "repository": {
     "type": "git",
