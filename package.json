@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "new project",
   "scripts": {
-    "start": " nodemon "
+    "start": " nodemon --exec babel-node src/init.js "
   },
   "repository": {
     "type": "git",
