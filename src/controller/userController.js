@@ -1,4 +1,5 @@
- import User from "../model/User"
+ import { async } from "regenerator-runtime";
+import User from "../model/User"
 
 
 
@@ -19,6 +20,35 @@ return res.redirect("/");
 };
 
 
-export const login = (req, res) => res.render("login",{pageTitle: "Login"});
+export const getlogin = (req, res) => res.render("Login",{pageTitle: "Login"});
+
+export const postlogin = async(req, res) => {
+    const {id,password} = req.body;
+    const pageTitle = "Login"
+    const user = await User.findOne({
+      id,
+      password
+    })
+    if (!user){
+      return res.status(400).render("login",{
+        pageTitle,
+        errorMessage : "아이디 혹은 비밀번호 오류"
+      })
+    }
+    
+    if(password == user.password){
+      req.session.loggedIn = true;
+      req.session.user = user;
+      return res.redirect("/");
+  }
+}
+
+
+export const logout = (req, res) => {
+  req.session.destroy();
+  return res.redirect("/");
+}
+
+
 export const profile = (req, res) => res.render("profile-edit",{pageTitle: "username"});
 

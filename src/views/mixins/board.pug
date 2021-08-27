@@ -1,0 +1,7 @@
+mixin board(board)
+    div
+        h4
+            a(href=`/board/${board.id}`)=board.title
+        p=board.description
+        small=board.createdAt
+        hr

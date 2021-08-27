@@ -1,4 +1,6 @@
 extends base
+include mixins/board
 
 block content 
-    
+    each board in boards 
+        +board(board)

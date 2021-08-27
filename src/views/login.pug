@@ -1,10 +1,12 @@
 extends base
 
 block content 
-    form(method="post")
-        input(type="text" placeholder="아이디를 입력하세요")
-        input(type="password" placeholder="비밀번호를 입력하세요")
-        input(type="button", value= "login")
+    if errorMessage
+        span=errorMessage
+    form(method="POST")
+        input(type="text" placeholder="아이디를 입력하세요" name="id")
+        input(type="password" placeholder="비밀번호를 입력하세요" name="password")
+        input(type="submit", value= "login")
         span 아이디가 없으신가요?
         a(href="/join") 가입하기
 

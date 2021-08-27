@@ -1,0 +1,18 @@
+header
+    nav 
+        ul 
+            li 
+                li 
+                    a(href="/") search 
+                li 
+                    a(href="/") Home 
+            if loggedIn
+                li
+                    a(href="/board/upload") Upload Board
+                li
+                    a(href="/logout") 로그아웃
+            else 
+                li 
+                    a(href="/login")  Login 
+                li 
+                    a(href="/join")  join
