@@ -7,7 +7,9 @@ const userSchema = new mongoose.Schema({
     username: { type:String, required : true,},
     email : { type:String, required : true, },
     createdAt: Date,
-
+    boards:[{
+        type:mongoose.Schema.Types.ObjectId, ref:"Board"
+    }],
 });
 
 // userSchema.pre(`save`,async function(){

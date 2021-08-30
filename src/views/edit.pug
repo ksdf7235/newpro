@@ -1,0 +1,9 @@
+extends base
+
+block content 
+    h4 보드 편집
+    form(method="POST")
+        input(type="text", placeholder="제목을 입력하세요", name = "title" value=board.title)
+        input(type="text", placeholder="설명을 입력하세요" ,name = "description" value=board.description )
+        input(type="text" ,placeholder="내용을 입력하세요" ,name = "contents" value=board.contents)
+        input(type="submit", value= "저장하기")

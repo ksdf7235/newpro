@@ -10,6 +10,8 @@ block content
        if String(board.owner._id) === String(loggedInUser._id)
         a(href=`${board.id}/edit`) 보드 수정
         br
-        a(href=`${board.id}/edit`) 보드 삭제
+        a(href=`${board.id}/delete`) 보드 삭제
+        div 
+              form(action="") 
 
 
