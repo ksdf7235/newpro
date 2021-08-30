@@ -28,6 +28,7 @@ export const postUpload = async(req, res) => {
     const {
         user:{_id},
     }= req.session;
+    const {path:fileUrl} = req.file;
     const {title,
         description,
         contents} = req.body;
@@ -36,7 +37,8 @@ export const postUpload = async(req, res) => {
             title:title,
             description:description,
             contents:contents,
-            creatAt:Date.now(),
+            fileUrl,
+            createdAt:Date.now(),
             owner:_id,
         });
         const user= await User.findById(_id);
@@ -56,7 +58,7 @@ export const postUpload = async(req, res) => {
         const { user:{_id}} =req.session;
         const board= await Board.findById(id);
         if(board == null) {
-            return res.status(400).render("494", {pageTitle: "NOT Found"})
+            return res.status(400).render("404", {pageTitle: "NOT Found"})
         }
         return res.render("edit",{ pageTitle:`수정 | ${board.title}`,board});
     }
@@ -79,6 +81,7 @@ export const postUpload = async(req, res) => {
             contents
         });
         return res.redirect(`/board/${id}`);
+        
 
     }
     

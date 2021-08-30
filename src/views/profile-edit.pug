@@ -1,9 +1,10 @@
 extends base
 
 block content 
-    form(method="post")
-        input(type="text" placeholder="아이디를 입력하세요" name = "id")
-        input(type="email" placeholder="이메일을 입력하세요" name = "email")
-        input(type="text" placeholder="별명을 입력하세요" name = "username")
-        input(type="password" placeholder="비밀번호를 입력하세요" name = "password")
-        input(type="button", value= "save")
+    form(method="post", enctype="multipart/form-data")
+        p 아이디 : #{loggedInUser.userId}
+        labe(for="avatar") 사용자 이미지
+        input(type="file" id="avatar" name="avatar" accept="image/*")
+        input(type="text" placeholder="이메일을 입력하세요" name = "email" value=loggedInUser.email)
+        input(type="text" placeholder="별명을 입력하세요" name = "username" value=loggedInUser.username)
+        input(type="submit", value= "변경하기")

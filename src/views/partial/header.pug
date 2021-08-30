@@ -10,6 +10,10 @@ header
                 li
                     a(href="/board/upload") Upload Board
                 li
+                    a(href=`/users/${loggedInUser._id}`) #{loggedInUser.username}의 프로필
+                li
+                    a(href=`/users/${loggedInUser._id}/edit`) #{loggedInUser.username}의 프로필 수정하기
+                li
                     a(href="/logout") 로그아웃
             else 
                 li 

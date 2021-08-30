@@ -1,0 +1,12 @@
+extends base
+include mixins/board
+
+block content 
+    div
+        img(src="/" + user.avatarUrl)
+        h3=user.name
+    div
+        each board in user.boards
+            +board(board)
+        else
+            span No videos found
