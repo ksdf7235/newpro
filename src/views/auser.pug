@@ -1,0 +1,9 @@
+extends base
+include mixins/auser
+
+block content 
+    h3 유저 보드
+    each user in users 
+        +user(user)
+    else
+        span 유저가 없어요 ㅠ

@@ -1,0 +1,17 @@
+extends base
+
+block content 
+      if imgBoard.imgfileUrl != ""
+        img(src="/" +imgBoard.imgfileUrl) 
+      div
+        p=imgBoard.description
+        h3=`가격: ${imgBoard.price}`
+        small=imgBoard.createdAt
+      div
+        small Uploaded by #{imgBoard.owner.userId}
+      form(method="POST")
+        input(type="submit", value= "담기")
+      if String(imgBoard.owner._id) === String(loggedInUser._id) || loggedInUser.administer == true
+        a(href=`${imgBoard.id}/edit`) 보드 수정
+        br
+        a(href=`${imgBoard.id}/delete`) 보드 삭제

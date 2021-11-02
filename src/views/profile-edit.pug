@@ -7,4 +7,9 @@ block content
         input(type="file" id="avatar" name="avatar" accept="image/*")
         input(type="text" placeholder="이메일을 입력하세요" name = "email" value=loggedInUser.email)
         input(type="text" placeholder="별명을 입력하세요" name = "username" value=loggedInUser.username)
+        input(type="button" id="adminBtn" value="관리자 권한 얻기")
+        input(type="text" id="admin" placeholder="관리자 번호를 입력하세요" name = "admin" )
         input(type="submit", value= "변경하기")
+block scripts 
+    script(type="module", src=`/client/adminCon.js`)
+        

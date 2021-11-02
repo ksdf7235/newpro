@@ -2,14 +2,14 @@ extends base
 
 
 block content 
-      video(src="/" +board.fileUrl, controls) 
+      if board.fileUrl != ""
+        video(src="/" +board.fileUrl, controls) 
       div
         p=board.description
         small=board.createdAt
       div
         small Uploaded by #{board.owner.userId}
-     
-      if String(board.owner._id) === String(loggedInUser._id)
+      if String(board.owner._id) === String(loggedInUser._id) || loggedInUser.administer == true
         a(href=`${board.id}/edit`) 보드 수정
         br
         a(href=`${board.id}/delete`) 보드 삭제

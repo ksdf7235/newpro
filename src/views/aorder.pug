@@ -1,0 +1,9 @@
+extends base
+include mixins/aorder
+
+block content 
+    p 주문 페이지
+    each aorder in aOrder 
+        +aorder(aorder)
+    else
+        span 주문이 없어요 ㅠ

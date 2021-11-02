@@ -4,6 +4,8 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import userRouter from "./router/userRouter";
 import boardRouter from "./router/boardRouter";
+import imgBoardRouter from "./router/imgBoardRouter";
+import adminRouter from "./router/adminRouter";
 import rootRouter from "./router/rootRouter";
 import { localMiddleWare } from "./middleware";
 
@@ -28,9 +30,12 @@ app.use(session({
 app.use(localMiddleWare);
 app.use("/" , rootRouter);
 app.use("/uploads" , express.static("uploads"));
+app.use("/client", express.static("src/client"));
 app.use("/users" , userRouter);
 app.use("/login" , userRouter);
 app.use("/board" , boardRouter);
+app.use("/img", imgBoardRouter)
+app.use("/admin", adminRouter)
 
 export default app;
 

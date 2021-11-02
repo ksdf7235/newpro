@@ -1,19 +1,51 @@
 import { async } from "regenerator-runtime";
 import boardModel from "../model/board";
 import Board from "../model/board"
+import imgBoard from "../model/imgBoard"
 import User from "../model/User";
 
 
 export const home = async (req,res) => {
      try{
          const boards = await Board.find({});
-    return res.render("home",{pageTitle: "Home", boards});
+         const imgBoards = await imgBoard.find({});
+    return res.render("home",{pageTitle: "Home", boards,imgBoards});
 }
     catch{
         return res.redirect("/board")
     }
     
     }
+
+
+export const test = async (req,res) => {
+         
+    return res.render("testboard",{pageTitle: "Test"});
+    
+    }
+    
+
+
+
+    export const page = async (req,res) => {
+    const imgBoards = await imgBoard.find({});
+    let div5= imgBoards.length/5
+    const imgBoardsSp = imgBoards.splice(0,5);
+         
+         
+    return res.render("pageboard",{pageTitle: "page",imgBoardsSp,div5});
+}
+
+export const paging = async (req,res) => {
+    const {id} = req.params
+    let divC = (id)*5
+    const imgBoards = await imgBoard.find({});
+    let div5= imgBoards.length/5
+    const imgBoardsSp = imgBoards.splice(divC,5);
+    
+    
+    return res.render("pageboard",{pageTitle: "page",imgBoardsSp,div5});     
+}
      
 export const handleBoard = async (req, res) => {
     const {id} = req.params;
@@ -21,17 +53,23 @@ export const handleBoard = async (req, res) => {
     return res.render("board",{ pageTitle: board.title, board });
 }
 
+
+
+
 export const getUpload = (req, res) => {
     res.render("upload",{ pageTitle:"Upload"});
 }
 export const postUpload = async(req, res) => {
+    let fileUrl = "";
     const {
         user:{_id},
     }= req.session;
-    const {path:fileUrl} = req.file;
+    req.file ? fileUrl = req.file.path : fileUrl = "";
+    console.log(req.file);
     const {title,
         description,
         contents} = req.body;
+    console.log(req.file);    
     try{
         const newBoard = await boardModel.create({
             title:title,

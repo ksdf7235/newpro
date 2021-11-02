@@ -1,0 +1,14 @@
+mixin uorder(uorder)
+    div
+        h4 주문자 : #{uorder.owner.username}
+        h4  주문 목록 
+        div 
+             each order in uorder.orders
+                img(src="/" +order.imgfileUrl)#smallImg
+                br
+                a(href=`/img/${order.id}`) #{order.title}
+                p 가격 #{order.price}
+                p 갯수 #{order.count}
+                hr
+        h4 지불액 : #{uorder.pay}
+        h4  주문 일자 : #{uorder.createdAt}

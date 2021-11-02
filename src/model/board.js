@@ -3,7 +3,7 @@ import mongoose  from "mongoose";
 
 const boardSchema = new mongoose.Schema({
     title: { type: String, required: true, trim: true },
-    fileUrl: { type: String,},
+    fileUrl: { type: String},
     description : { type: String, required: true, trim: true},
     contents: { type: String, required: true, trim: true },
     createdAt :{type: Date, required: true, default: Date.now}, 

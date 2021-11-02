@@ -1,0 +1,15 @@
+mixin bucket(bucket)  
+        div
+            h4
+                a(href=`/img/${bucket.id}`)=bucket.title
+            img(src="/" +bucket.imgfileUrl)#smallImg
+            div#updown
+                p=`가격 : `
+                    span#pay=`${bucket.price}`
+                input(type="text", name="sel",id="sel"  ,size="1" value=`${bucket.count}` ) 
+                input(type="hidden", name="bid",id="bid" ,value=`${bucket.id}` ) 
+                span
+                    i.fas.fa-arrow-up#up
+                span
+                    i.fas.fa-arrow-down#down
+                a(href=`/users/${id}/bucket/${bucket._id}/delete`)="삭제" 

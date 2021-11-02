@@ -1,12 +1,34 @@
 extends base
 include mixins/board
+include mixins/imgboard
+include mixins/bucket
 
 block content 
     div
+        p Avatar
         img(src="/" + user.avatarUrl)
-        h3=user.name
+        h3 별명 :  #{loggedInUser.username}
+        h3 이메일 : #{loggedInUser.email}
+        a(href=`/users/${loggedInUser._id}/edit`) 프로필 수정하기
     div
+        h2 작성한 보드 모음
         each board in user.boards
             +board(board)
         else
             span No videos found
+    div
+        h2 작성한 이미지 모음
+        each imgboard in user.imgboards
+            +imgboard(imgboard)
+        else
+            span No imgs found
+    div 
+            a(href=`/users/${loggedInUser._id}/order`) 주문 내역        
+    div 
+        a(href=`/users/${loggedInUser._id}/bucket`) 장바구니
+        br
+        if loggedInUser.administer == true
+            a(href=`/admin`) 관리자 메뉴
+    
+
+            

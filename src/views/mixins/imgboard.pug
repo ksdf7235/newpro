@@ -1,0 +1,10 @@
+mixin imgboard(imgboard)
+    div 
+        h4
+        img(src="/" +imgboard.imgfileUrl)#smallImg
+        br
+        a(href=`/img/${imgboard.id}`)=imgboard.title
+        br
+        p=`${imgboard.description}`
+        p=`가격 : ${imgboard.price} `
+        hr

@@ -1,0 +1,16 @@
+extends base
+include mixins/bucket
+block content
+    form(method="POST")
+        div
+            h2 담은 버켓 모음
+            each bucket in count
+                +bucket(bucket)
+            else
+                span No buckets found
+            span=`가격 :` 
+            input(type="text" value=`${value}` name="pay" id="cal" readonly)
+            input(type="submit", value= "구매", name="bBuy", id="bBuy") 
+block scripts 
+    script(type="module", src=`/client/bucketSection.js`)
+     

@@ -1,0 +1,15 @@
+extends base
+include mixins/board
+include mixins/aboard
+
+block content 
+    h3 비디오 보드
+    each board in boards 
+        +board(board)
+    else
+        span No videos found
+    h3 이미지 보드
+    each aimgBoard in imgBoards 
+        +aimgBoard(aimgBoard)
+    else
+        span No images found

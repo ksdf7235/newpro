@@ -2,20 +2,30 @@ header
     nav 
         ul 
             li 
+                
+            if loggedIn
                 li 
                     a(href="/") search 
                 li 
                     a(href="/") Home 
-            if loggedIn
+                li 
+                    a(href="/page") Board 
                 li
                     a(href="/board/upload") Upload Board
                 li
+                    a(href="/board/imgupload") Upload imgBoard
+                li#profile
+                    img(src="/" + loggedInUser.avatarUrl)#aimg
                     a(href=`/users/${loggedInUser._id}`) #{loggedInUser.username}의 프로필
                 li
-                    a(href=`/users/${loggedInUser._id}/edit`) #{loggedInUser.username}의 프로필 수정하기
-                li
-                    a(href="/logout") 로그아웃
+                    a(href="/logout") 로그아웃     
             else 
+                li 
+                    a(href="/") search 
+                li 
+                    a(href="/") Home 
+                li 
+                    a(href="/page") Board 
                 li 
                     a(href="/login")  Login 
                 li 

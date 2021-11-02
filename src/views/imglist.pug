@@ -1,0 +1,6 @@
+extends base
+include mixins/imgboard
+
+block content 
+    each imgboard in imgBoards 
+        +imgboard(imgboard)

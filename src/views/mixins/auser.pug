@@ -1,0 +1,21 @@
+mixin user(user)
+    div
+        h4
+        p 아바타
+        img(src="/" +user.avatarUrl)#smallImg
+        p 아이디 : #{user.userId}
+        p 비밀번호 : #{user.password}
+        p 별명 :  #{user.username}
+        p 이메일 : #{user.email}
+        p 가입일 : #{user.createdAt}
+        p 등록한 이미지 보드
+        each img in user.imgboards
+            a(href=`/img/${img.id}`) #{img.title}
+        else 
+            small 등록한 보드가 없습니다.
+        p 주문 모음
+        each order in user.orders
+            p 주문 아이디 : #{order._id}
+        else
+            small 주문 내역이 없습니다. 
+        hr

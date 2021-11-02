@@ -1,0 +1,15 @@
+mixin aimgBoard(aimgBoard)
+    div 
+        h4
+        img(src="/" +aimgBoard.imgfileUrl)#smallImg
+        br
+        a(href=`/img/${aimgBoard.id}`)=aimgBoard.title
+        br
+        p=`가격 : ${aimgBoard.price} `
+        p=aimgBoard.description
+        small Uploaded by #{aimgBoard.owner.userId}
+        br
+        small=aimgBoard.createdAt
+        br
+        a(href=`${aimgBoard.id}/delete`) 보드 삭제
+        hr
